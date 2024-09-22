@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Профиль{% endblock %}
+
+{% block content %}
+    <h1>Это ваш профиль</h1>
+    <p>Добро пожаловать на страницу профиля.
+        Вы можете <a href="{% url 'edit' %}"> редактировать профиль, </a>
+        <a href="{% url 'password_change' %}">изменить пароль</a> или
+        <a href="{% url 'password_reset' %}">сбросить имеющийся пароль</a> </p>
+{% endblock %}
