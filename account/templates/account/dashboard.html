@@ -3,9 +3,21 @@
 {% block title %}Профиль{% endblock %}
 
 {% block content %}
-    <h1>Это ваш профиль</h1>
-    <p>Добро пожаловать на страницу профиля.
-        Вы можете <a href="{% url 'edit' %}"> редактировать профиль, </a>
-        <a href="{% url 'password_change' %}">изменить пароль</a> или
-        <a href="{% url 'password_reset' %}">сбросить имеющийся пароль</a> </p>
+
+    {% with total_images_created=request.user.images_created.count %}
+        <p> You have bookmarklet {{ total_images_created }}
+            image{{ total_images_created|pluralize }}</p>
+    {% endwith %}
+
+    <p>
+        button to bookmarks toolbar to images frm othr webs ---->
+        <a href="javascript:{% include 'bookmarklet_launcher.js' %}"
+        class="button"> Bkmrk it!</a>
+    </p>
+
+    <p>
+        You can also <a href="{% url 'edit' %}"> edit profile</a>
+        or <a href="{% url 'password_change' %}">change pssword</a>
+    </p>
+
 {% endblock %}

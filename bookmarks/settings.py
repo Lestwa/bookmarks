@@ -25,6 +25,11 @@ SECRET_KEY = 'django-insecure-uf2o7-@=*9!l6!8pxat9#1=1eg!yht*pj=u#0d00lfp*sraeyf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+if DEBUG:
+    import mimetypes
+    mimetypes.add_type('application/javascript', '.js', True)
+    mimetypes.add_type('text/css', '.css', True)
+
 ALLOWED_HOSTS = []
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 #LOGIN_REDIRECT_URL = 'dashboard'
