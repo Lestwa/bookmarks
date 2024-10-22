@@ -14,13 +14,12 @@ def image_create(request):
             new_image = form.save(commit=False)
             new_image.user = request.user
             new_image.save()
-            messages.success(request,
-                             'Image successfully created')
+            messages.success(request, 'Img added successfully')
             return redirect(new_image.get_absolute_url())
-        else:
-            form = ImageCreateForm(data=request.GET)
-
-        return render(request,
-                      'images/image/create.html',
-                      {'section': 'images',
-                       'form': form})
+    else:
+        form = ImageCreateForm(data=request.GET)
+    return render(
+        request,
+        'images/image/create.html',
+        {'section': 'images', 'form': form},
+    )
