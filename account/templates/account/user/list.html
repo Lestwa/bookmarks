@@ -11,7 +11,11 @@
         {% for user in users %}
         <div class="user">
             <a href="{{ user.get_absolute_url }}">
-                <img src="{% thumbnail user.profile.photo 180x180 %}">
+                {% if user.profile.photo %}
+                    <img src="{% thumbnail user.profile.photo 180x180 %}">
+                {% else %}
+                    <img src="https://pbs.twimg.com/media/B9xpAfmCEAUROu7.jpg">
+                {% endif %}
             </a>
             <div class="info">
                 <a href="{{ user.get_absolute_url }}" class="title">
