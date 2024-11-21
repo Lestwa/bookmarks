@@ -5,7 +5,7 @@ from .forms import LoginForm, UserRegistrationForm, UserEditForm, ProfileEditFor
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Contact
 from django.contrib import messages
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User #???
 from django.views.decorators.http import require_POST
 from actions.utils import create_action
 from actions.models import Action
