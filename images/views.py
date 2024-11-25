@@ -40,8 +40,8 @@ def image_create(request):
 
 def image_detail(request, id, slug):
     image = get_object_or_404(Image, id=id, slug=slug)
-    total_views = r.incr(f'image:{image.id}:views')
-    r.zincrby('image_ranking', 1. image.id) #???
+    total_views = r.incr(f'image:{image.id}:views') #Redis incr() и incrby() использовать для подсчета элементов
+    r.zincrby('image_ranking', 1, image.id) #???
     return render(
         request,
         'images/image/detail.html',
@@ -103,6 +103,6 @@ def image_ranking(request):
     most_viewed = list(Image.objects.filter(id__in=image_ranking_ids))
     most_viewed.sort(key=lambda x: image_ranking_ids.index(x.id))
     return render(request,
-                  'images/image/ranking.html',
+                  'images/image/rating.html',
                   {'section': 'images',
                    'most_viewed': most_viewed})
